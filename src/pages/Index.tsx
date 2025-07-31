@@ -4,9 +4,11 @@ import { MoodCheckIn } from "@/components/MoodCheckIn";
 import { ConnectScreen } from "@/components/ConnectScreen";
 import { Dashboard } from "@/components/Dashboard";
 import { PremiumPlansModal } from "@/components/PremiumPlansModal";
+import { AdminDashboard } from "@/components/AdminDashboard";
+import { PremiumAnalyticsDashboard } from "@/components/PremiumAnalyticsDashboard";
 import { useToast } from "@/hooks/use-toast";
 
-type AppState = "welcome" | "mood" | "connect" | "dashboard" | "journal" | "settings";
+type AppState = "welcome" | "mood" | "connect" | "dashboard" | "journal" | "settings" | "admin" | "premium-analytics";
 
 const Index = () => {
   const [currentState, setCurrentState] = useState<AppState>("welcome");
@@ -53,6 +55,8 @@ const Index = () => {
   const handleNavigate = (page: string) => {
     if (page === "connect") setCurrentState("connect");
     else if (page === "mood") setCurrentState("mood");
+    else if (page === "admin") setCurrentState("admin");
+    else if (page === "premium-analytics") setCurrentState("premium-analytics");
     else if (page === "journal") {
       toast({
         title: "Journal Space 📝",
@@ -77,6 +81,10 @@ const Index = () => {
         return <ConnectScreen onConnect={handleConnect} />;
       case "dashboard":
         return <Dashboard onNavigate={handleNavigate} />;
+      case "admin":
+        return <AdminDashboard onNavigate={handleNavigate} />;
+      case "premium-analytics":
+        return <PremiumAnalyticsDashboard onNavigate={handleNavigate} />;
       default:
         return <WelcomeScreen onStart={handleWelcomeStart} />;
     }

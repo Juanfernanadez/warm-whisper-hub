@@ -148,6 +148,24 @@ export const Dashboard = ({ onNavigate }: DashboardProps) => {
 
         {/* Settings */}
         <div className="text-center pt-4">
+          <div className="flex justify-center gap-4 mb-4">
+            <Button 
+              variant="ghost" 
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              onClick={() => onNavigate("admin")}
+            >
+              <Shield className="w-4 h-4 mr-2" />
+              Admin Dashboard
+            </Button>
+            <Button 
+              variant="ghost" 
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              onClick={() => onNavigate("premium-analytics")}
+            >
+              <BarChart3 className="w-4 h-4 mr-2" />
+              Premium Analytics
+            </Button>
+          </div>
           <Button 
             variant="ghost" 
             className="text-muted-foreground hover:text-foreground transition-colors"
