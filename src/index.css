@@ -47,6 +47,9 @@ All colors MUST be HSL.
     --gradient-warm: linear-gradient(135deg, hsl(var(--primary-soft)), hsl(var(--secondary-soft)));
     --gradient-calm: linear-gradient(180deg, hsl(var(--accent-soft)), hsl(var(--background)));
     --gradient-connect: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--accent)));
+    --gradient-soft: linear-gradient(135deg, hsl(var(--muted)), hsl(var(--background)));
+    --gradient-healing: linear-gradient(135deg, hsl(151 55% 85%), hsl(151 25% 95%));
+    --gradient-generous: linear-gradient(135deg, hsl(44 100% 88%), hsl(38 100% 95%));
 
     /* Soft shadows */
     --shadow-gentle: 0 4px 20px -8px hsl(var(--primary) / 0.15);

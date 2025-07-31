@@ -64,7 +64,16 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				success: 'hsl(120 60% 60%)'
+			},
+			backgroundImage: {
+				"gradient-warm": "var(--gradient-warm)",
+				"gradient-calm": "var(--gradient-calm)",
+				"gradient-connect": "var(--gradient-connect)",
+				"gradient-soft": "var(--gradient-soft)",
+				"gradient-healing": "var(--gradient-healing)",
+				"gradient-generous": "var(--gradient-generous)"
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

@@ -3,6 +3,7 @@ import { WelcomeScreen } from "@/components/WelcomeScreen";
 import { MoodCheckIn } from "@/components/MoodCheckIn";
 import { ConnectScreen } from "@/components/ConnectScreen";
 import { Dashboard } from "@/components/Dashboard";
+import { PremiumPlansModal } from "@/components/PremiumPlansModal";
 import { useToast } from "@/hooks/use-toast";
 
 type AppState = "welcome" | "mood" | "connect" | "dashboard" | "journal" | "settings";
@@ -10,6 +11,7 @@ type AppState = "welcome" | "mood" | "connect" | "dashboard" | "journal" | "sett
 const Index = () => {
   const [currentState, setCurrentState] = useState<AppState>("welcome");
   const [isGuest, setIsGuest] = useState(true);
+  const [showPremiumModal, setShowPremiumModal] = useState(false);
   const { toast } = useToast();
 
   const handleWelcomeStart = (asGuest: boolean) => {
@@ -41,6 +43,10 @@ const Index = () => {
         title: "You're connected! 💙",
         description: "Remember: you can exit gently anytime",
       });
+      // Show premium offer after talk completes
+      setTimeout(() => {
+        setShowPremiumModal(true);
+      }, 3000);
     }, 2000);
   };
 
@@ -76,7 +82,25 @@ const Index = () => {
     }
   };
 
-  return renderCurrentScreen();
+  const handleSelectPlan = (planId: string) => {
+    toast({
+      title: "Starting your Premium journey! ✨",
+      description: `Welcome to ${planId} plan - 7 days free`,
+    });
+    setShowPremiumModal(false);
+    // Here you would integrate with Stripe/payment processing
+  };
+
+  return (
+    <>
+      {renderCurrentScreen()}
+      <PremiumPlansModal
+        isOpen={showPremiumModal}
+        onClose={() => setShowPremiumModal(false)}
+        onSelectPlan={handleSelectPlan}
+      />
+    </>
+  );
 };
 
 export default Index;
