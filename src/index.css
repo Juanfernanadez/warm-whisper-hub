@@ -8,35 +8,56 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Soft pastel color palette for emotional safety */
+    --background: 320 100% 98%;
+    --foreground: 260 8% 25%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 260 8% 25%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 260 8% 25%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Light purple primary */
+    --primary: 280 65% 75%;
+    --primary-foreground: 0 0% 100%;
+    --primary-soft: 280 40% 90%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Peach secondary */
+    --secondary: 25 85% 85%;
+    --secondary-foreground: 260 8% 25%;
+    --secondary-soft: 25 60% 95%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Calm blue accent */
+    --accent: 220 60% 80%;
+    --accent-foreground: 0 0% 100%;
+    --accent-soft: 220 40% 95%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --muted: 320 40% 96%;
+    --muted-foreground: 260 6% 55%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 320 30% 92%;
+    --input: 320 30% 95%;
+    --ring: 280 65% 75%;
 
-    --radius: 0.5rem;
+    /* Warm gradients */
+    --gradient-warm: linear-gradient(135deg, hsl(var(--primary-soft)), hsl(var(--secondary-soft)));
+    --gradient-calm: linear-gradient(180deg, hsl(var(--accent-soft)), hsl(var(--background)));
+    --gradient-connect: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--accent)));
+
+    /* Soft shadows */
+    --shadow-gentle: 0 4px 20px -8px hsl(var(--primary) / 0.15);
+    --shadow-warm: 0 8px 30px -12px hsl(var(--secondary) / 0.25);
+    --shadow-floating: 0 10px 40px -20px hsl(var(--accent) / 0.2);
+
+    /* Animation timings */
+    --transition-gentle: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +121,75 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+}
+
+@layer components {
+  /* Gentle button variants */
+  .btn-warm {
+    @apply bg-gradient-to-r from-secondary to-secondary-soft text-secondary-foreground 
+           shadow-[var(--shadow-warm)] transition-[var(--transition-gentle)]
+           hover:scale-105 hover:shadow-[var(--shadow-floating)]
+           active:scale-95;
+  }
+  
+  .btn-connect {
+    @apply bg-gradient-to-r from-primary to-accent text-primary-foreground 
+           shadow-[var(--shadow-gentle)] transition-[var(--transition-bounce)]
+           hover:scale-105 hover:shadow-[var(--shadow-floating)]
+           active:scale-95;
+  }
+  
+  .btn-gentle {
+    @apply bg-accent-soft text-accent-foreground border border-accent/20
+           shadow-[var(--shadow-gentle)] transition-[var(--transition-gentle)]
+           hover:bg-accent hover:text-accent-foreground hover:scale-105
+           active:scale-95;
+  }
+
+  /* Card with warm feeling */
+  .card-warm {
+    @apply bg-gradient-to-br from-card to-primary-soft/20 
+           shadow-[var(--shadow-warm)] border border-border/50
+           transition-[var(--transition-gentle)]
+           hover:shadow-[var(--shadow-floating)] hover:scale-[1.02];
+  }
+
+  /* Floating animation for connection elements */
+  .float-gentle {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Pulse for heartbeat effect */
+  .pulse-heart {
+    animation: pulse-heart 2s ease-in-out infinite;
+  }
+  
+  @keyframes pulse-heart {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+  }
+
+  /* Gentle slide-in animations */
+  .slide-in-gentle {
+    animation: slide-in-gentle 0.6s ease-out;
+  }
+  
+  @keyframes slide-in-gentle {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
