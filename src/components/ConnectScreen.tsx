@@ -6,7 +6,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Video, Users, MessageCircle, Clock, Shield, Mic, MicOff, Heart, Waves, Dove, HandHeart, MapPin, Timer, Headphones, BookOpen, Brain, Bot } from "lucide-react";
+import { Video, Users, MessageCircle, Clock, Shield, Mic, MicOff, Heart, Waves, Move as Dove, HandHeart, MapPin, Timer, Headphones, BookOpen, Brain, Bot } from "lucide-react";
 
 interface ConnectScreenProps {
   onConnect: (type: "one-on-one" | "group" | "browse") => void;
