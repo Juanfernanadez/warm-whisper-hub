@@ -6,14 +6,24 @@ import { Dashboard } from "@/components/Dashboard";
 import { PremiumPlansModal } from "@/components/PremiumPlansModal";
 import { AdminDashboard } from "@/components/AdminDashboard";
 import { PremiumAnalyticsDashboard } from "@/components/PremiumAnalyticsDashboard";
+import { EmotionalBadgeSystem } from "@/components/EmotionalBadgeSystem";
+import { ProgressTracker } from "@/components/ProgressTracker";
+import { VoiceLogCompanion } from "@/components/VoiceLogCompanion";
 import { useToast } from "@/hooks/use-toast";
 
-type AppState = "welcome" | "mood" | "connect" | "dashboard" | "journal" | "settings" | "admin" | "premium-analytics";
+type AppState = "welcome" | "mood" | "connect" | "dashboard" | "journal" | "settings" | "admin" | "premium-analytics" | "badges" | "progress" | "voice-log";
 
 const Index = () => {
   const [currentState, setCurrentState] = useState<AppState>("welcome");
   const [isGuest, setIsGuest] = useState(true);
   const [showPremiumModal, setShowPremiumModal] = useState(false);
+  const [userStats] = useState({
+    talksCompleted: 8,
+    positiveReviews: 2,
+    journalStreak: 3,
+    nightOwlDays: 4,
+    totalDays: 15
+  });
   const { toast } = useToast();
 
   const handleWelcomeStart = (asGuest: boolean) => {
@@ -57,6 +67,9 @@ const Index = () => {
     else if (page === "mood") setCurrentState("mood");
     else if (page === "admin") setCurrentState("admin");
     else if (page === "premium-analytics") setCurrentState("premium-analytics");
+    else if (page === "badges") setCurrentState("badges");
+    else if (page === "progress") setCurrentState("progress");
+    else if (page === "voice-log") setCurrentState("voice-log");
     else if (page === "journal") {
       toast({
         title: "Journal Space 📝",
@@ -85,6 +98,12 @@ const Index = () => {
         return <AdminDashboard onNavigate={handleNavigate} />;
       case "premium-analytics":
         return <PremiumAnalyticsDashboard onNavigate={handleNavigate} />;
+      case "badges":
+        return <EmotionalBadgeSystem userStats={userStats} />;
+      case "progress":
+        return <ProgressTracker onNavigate={handleNavigate} />;
+      case "voice-log":
+        return <VoiceLogCompanion onClose={() => setCurrentState("dashboard")} />;
       default:
         return <WelcomeScreen onStart={handleWelcomeStart} />;
     }

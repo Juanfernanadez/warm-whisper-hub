@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Heart, MessageCircle, BookOpen, BarChart3, Settings, Star } from "lucide-react";
+import { Heart, MessageCircle, BookOpen, BarChart3, Settings, Star, Award, TrendingUp, Mic, Shield } from "lucide-react";
 
 interface DashboardProps {
   onNavigate: (page: string) => void;
@@ -149,6 +149,30 @@ export const Dashboard = ({ onNavigate }: DashboardProps) => {
         {/* Settings */}
         <div className="text-center pt-4">
           <div className="flex justify-center gap-4 mb-4">
+            <Button 
+              variant="ghost" 
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              onClick={() => onNavigate("badges")}
+            >
+              <Award className="w-4 h-4 mr-2" />
+              Badges
+            </Button>
+            <Button 
+              variant="ghost" 
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              onClick={() => onNavigate("progress")}
+            >
+              <TrendingUp className="w-4 h-4 mr-2" />
+              Progress
+            </Button>
+            <Button 
+              variant="ghost" 
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              onClick={() => onNavigate("voice-log")}
+            >
+              <Mic className="w-4 h-4 mr-2" />
+              Voice Log
+            </Button>
             <Button 
               variant="ghost" 
               className="text-muted-foreground hover:text-foreground transition-colors"
