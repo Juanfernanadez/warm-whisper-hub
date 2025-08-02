@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Heart, MessageCircle, BookOpen, BarChart3, Settings, Star, Award, TrendingUp, Mic, Shield } from "lucide-react";
+import { Heart, MessageCircle, BookOpen, BarChart3, Settings, Star, Award, TrendingUp, Mic, Shield, Plus } from "lucide-react";
 
 interface DashboardProps {
   onNavigate: (page: string) => void;
@@ -49,6 +49,31 @@ export const Dashboard = ({ onNavigate }: DashboardProps) => {
           </Button>
         </div>
 
+        {/* Host a Room CTA */}
+        <Card className="card-warm slide-in-gentle">
+          <CardContent className="p-6 text-center space-y-4">
+            <div className="flex justify-center">
+              <div className="bg-accent/20 p-4 rounded-full">
+                <Plus className="w-8 h-8 text-accent" />
+              </div>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold text-foreground mb-2">
+                Host Your Own Room
+              </h3>
+              <p className="text-muted-foreground">
+                Create a safe space for group discussions and support others
+              </p>
+            </div>
+            <Button 
+              onClick={() => onNavigate("talk-rooms")}
+              className="btn-star"
+            >
+              <Plus className="w-4 h-4 mr-2" />
+              Create Room
+            </Button>
+          </CardContent>
+        </Card>
         {/* Stats cards */}
         <div className="grid md:grid-cols-3 gap-4 slide-in-gentle">
           {/* Streak card */}

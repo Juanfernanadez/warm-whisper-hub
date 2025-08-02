@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { RoomAnalytics } from "@/components/RoomAnalytics";
 import { 
   Users, 
   TrendingUp, 
@@ -17,7 +18,8 @@ import {
   BarChart3,
   Clock,
   UserCheck,
-  Flag
+  Flag,
+  Home
 } from "lucide-react";
 
 interface AdminDashboardProps {
@@ -95,9 +97,9 @@ export const AdminDashboard = ({ onNavigate }: AdminDashboardProps) => {
           <TabsList className="grid w-full grid-cols-5">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="users">Users</TabsTrigger>
+            <TabsTrigger value="rooms">Rooms</TabsTrigger>
             <TabsTrigger value="moderation">Moderation</TabsTrigger>
             <TabsTrigger value="content">Content</TabsTrigger>
-            <TabsTrigger value="premium">Premium</TabsTrigger>
           </TabsList>
 
           {/* Overview Tab */}
@@ -261,6 +263,11 @@ export const AdminDashboard = ({ onNavigate }: AdminDashboardProps) => {
             </div>
           </TabsContent>
 
+          {/* Rooms Tab */}
+          <TabsContent value="rooms" className="space-y-6">
+            <RoomAnalytics onNavigate={onNavigate} />
+          </TabsContent>
+
           {/* Moderation Tab */}
           <TabsContent value="moderation" className="space-y-6">
             <Card className="card-warm">
@@ -355,72 +362,6 @@ export const AdminDashboard = ({ onNavigate }: AdminDashboardProps) => {
                       )}
                     </div>
                   ))}
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          {/* Premium Tab */}
-          <TabsContent value="premium" className="space-y-6">
-            <div className="grid md:grid-cols-3 gap-4">
-              <Card className="card-warm">
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Upsell Views</CardTitle>
-                  <Eye className="h-4 w-4 text-muted-foreground" />
-                </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold">{mockData.premiumFunnel.upsellViews.toLocaleString()}</div>
-                  <p className="text-xs text-muted-foreground">
-                    This month
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="card-warm">
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Conversion Rate</CardTitle>
-                  <TrendingUp className="h-4 w-4 text-muted-foreground" />
-                </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold">{mockData.premiumFunnel.conversionRate}%</div>
-                  <p className="text-xs text-muted-foreground">
-                    Free to Premium
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="card-warm">
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Monthly Revenue</CardTitle>
-                  <DollarSign className="h-4 w-4 text-muted-foreground" />
-                </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold">${mockData.premiumFunnel.revenue.toLocaleString()}</div>
-                  <p className="text-xs text-muted-foreground">
-                    +23% from last month
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-
-            <Card className="card-warm">
-              <CardHeader>
-                <CardTitle>Premium Upgrade Funnel</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center p-3 bg-primary-soft rounded-lg">
-                    <span>Users seeing upsell prompt</span>
-                    <span className="font-semibold">2,341</span>
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-secondary-soft rounded-lg">
-                    <span>Started trial</span>
-                    <span className="font-semibold">487 (20.8%)</span>
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-accent-soft rounded-lg">
-                    <span>Converted to paid</span>
-                    <span className="font-semibold">204 (8.7%)</span>
-                  </div>
                 </div>
               </CardContent>
             </Card>

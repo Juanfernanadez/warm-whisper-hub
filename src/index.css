@@ -486,7 +486,8 @@ All colors MUST be HSL.
 
   /* Custom Slider Styling */
   .slider {
-    background: linear-gradient(to right, hsl(var(--accent)) 0%, hsl(var(--accent)) var(--value, 60%), hsl(var(--muted)) var(--value, 60%), hsl(var(--muted)) 100%);
+    background: hsl(var(--muted));
+    border-radius: 8px;
   }
 
   .slider::-webkit-slider-thumb {
@@ -522,6 +523,11 @@ All colors MUST be HSL.
     box-shadow: 0 0 10px hsl(var(--accent) / 0.5);
   }
 
+  .slider::-moz-range-track {
+    background: hsl(var(--muted));
+    border-radius: 8px;
+    height: 8px;
+  }
   /* Room Creation Modal Animations */
   .room-type-card {
     transition: all 0.2s ease-in-out;

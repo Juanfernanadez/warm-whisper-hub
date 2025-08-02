@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { BackButton } from "@/components/BackButton";
+import { CreateRoomModal } from "@/components/CreateRoomModal";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Users, Clock, Heart, MessageCircle, Shield, Star } from "lucide-react";
+import { Users, Clock, Heart, MessageCircle, Shield, Star, Plus } from "lucide-react";
 
 interface TalkRoom {
   id: string;
@@ -122,6 +123,7 @@ const getMoodIcon = (mood: string) => {
 
 export const TalkRooms = () => {
   const [selectedFilter, setSelectedFilter] = useState<string>("all");
+  const [showCreateModal, setShowCreateModal] = useState(false);
 
   const filters = [
     { id: "all", label: "All Rooms", count: talkRooms.length },
@@ -143,6 +145,11 @@ export const TalkRooms = () => {
     // Here you would implement the room joining logic
   };
 
+  const handleRoomCreated = (roomData: any) => {
+    console.log('Room created:', roomData);
+    // Here you would add the new room to your rooms list
+    // and potentially navigate to the room or show success message
+  };
   return (
     <div className="min-h-screen night-sky relative overflow-hidden">
       {/* Animated star field background */}
@@ -287,11 +294,20 @@ export const TalkRooms = () => {
                 Create a safe space for others and build meaningful connections
               </p>
               <Button className="btn-star w-full">
-                ⭐ Create Room
+                onClick={() => setShowCreateModal(true)}
+                <Plus className="w-4 h-4 mr-2" />
+                Create Your Room
               </Button>
             </CardContent>
           </Card>
         </div>
+
+        {/* Create Room Modal */}
+        <CreateRoomModal
+          isOpen={showCreateModal}
+          onClose={() => setShowCreateModal(false)}
+          onRoomCreated={handleRoomCreated}
+        />
       </div>
     </div>
   );
