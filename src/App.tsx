@@ -14,7 +14,7 @@ const queryClient = new QueryClient();
 
 const AppContent = () => {
   const location = useLocation();
-  const showNavbar = location.pathname !== "/";
+  const showNavbar = true; // Always show navbar
 
   return (
     <>

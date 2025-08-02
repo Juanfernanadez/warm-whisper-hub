@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Home, BarChart3, MessageCircle, CreditCard, User, LogIn } from "lucide-react";
+import { Home, BarChart3, MessageCircle, CreditCard, User, LogIn, Heart } from "lucide-react";
 
 interface NavbarProps {
   isAuthenticated?: boolean;
@@ -30,7 +30,7 @@ export const Navbar = ({ isAuthenticated = false, onSignIn, onProfile }: NavbarP
           {/* Logo/Brand */}
           <Link to="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gradient-to-br from-accent to-secondary rounded-full flex items-center justify-center">
-              <span className="text-accent-foreground font-bold text-sm">W</span>
+              <Heart className="w-4 h-4 text-accent-foreground" fill="currentColor" />
             </div>
             <span className="text-foreground font-semibold text-lg hidden sm:block">
               Warm Whisper

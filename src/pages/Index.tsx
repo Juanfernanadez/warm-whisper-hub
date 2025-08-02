@@ -17,6 +17,7 @@ const Index = () => {
   const [currentState, setCurrentState] = useState<AppState>("welcome");
   const [isGuest, setIsGuest] = useState(true);
   const [showPremiumModal, setShowPremiumModal] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(false);
   const [userStats] = useState({
     talksCompleted: 8,
     positiveReviews: 2,
@@ -29,6 +30,7 @@ const Index = () => {
   const handleWelcomeStart = (asGuest: boolean) => {
     setIsGuest(asGuest);
     setCurrentState("mood");
+    setShowNavbar(true); // Show navbar after welcome screen
     toast({
       title: "Welcome! 🌟",
       description: "Take a moment to check in with yourself",
@@ -130,14 +132,14 @@ const Index = () => {
   };
 
   return (
-    <>
+    <div style={{ paddingTop: showNavbar ? '64px' : '0' }}>
       {renderCurrentScreen()}
       <PremiumPlansModal
         isOpen={showPremiumModal}
         onClose={() => setShowPremiumModal(false)}
         onSelectPlan={handleSelectPlan}
       />
-    </>
+    </div>
   );
 };
 
