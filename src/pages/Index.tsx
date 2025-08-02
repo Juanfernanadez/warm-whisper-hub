@@ -68,7 +68,18 @@ const Index = () => {
     else if (page === "admin") setCurrentState("admin");
     else if (page === "premium-analytics") setCurrentState("premium-analytics");
     else if (page === "badges") setCurrentState("badges");
-    else if (page === "progress") setCurrentState("progress");
+    else if (page === "progress") {
+      // Navigate to the new Progress page
+      window.location.href = "/progress";
+    }
+    else if (page === "talk-rooms") {
+      // Navigate to the Talk Rooms page
+      window.location.href = "/talk-rooms";
+    }
+    else if (page === "pricing") {
+      // Navigate to the Pricing page
+      window.location.href = "/pricing";
+    }
     else if (page === "voice-log") setCurrentState("voice-log");
     else if (page === "journal") {
       toast({

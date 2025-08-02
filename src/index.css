@@ -8,79 +8,7 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Soft pastel color palette for emotional safety */
-    --background: 320 100% 98%;
-    --foreground: 260 8% 25%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 260 8% 25%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 260 8% 25%;
-
-    /* Light purple primary */
-    --primary: 280 65% 75%;
-    --primary-foreground: 0 0% 100%;
-    --primary-soft: 280 40% 90%;
-
-    /* Peach secondary */
-    --secondary: 25 85% 85%;
-    --secondary-foreground: 260 8% 25%;
-    --secondary-soft: 25 60% 95%;
-
-    /* Calm blue accent */
-    --accent: 220 60% 80%;
-    --accent-foreground: 0 0% 100%;
-    --accent-soft: 220 40% 95%;
-
-    --muted: 320 40% 96%;
-    --muted-foreground: 260 6% 55%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 320 30% 92%;
-    --input: 320 30% 95%;
-    --ring: 280 65% 75%;
-
-    /* Warm gradients */
-    --gradient-warm: linear-gradient(135deg, hsl(var(--primary-soft)), hsl(var(--secondary-soft)));
-    --gradient-calm: linear-gradient(180deg, hsl(var(--accent-soft)), hsl(var(--background)));
-    --gradient-connect: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--accent)));
-    --gradient-soft: linear-gradient(135deg, hsl(var(--muted)), hsl(var(--background)));
-    --gradient-healing: linear-gradient(135deg, hsl(151 55% 85%), hsl(151 25% 95%));
-    --gradient-generous: linear-gradient(135deg, hsl(44 100% 88%), hsl(38 100% 95%));
-
-    /* Soft shadows */
-    --shadow-gentle: 0 4px 20px -8px hsl(var(--primary) / 0.15);
-    --shadow-warm: 0 8px 30px -12px hsl(var(--secondary) / 0.25);
-    --shadow-floating: 0 10px 40px -20px hsl(var(--accent) / 0.2);
-
-    /* Animation timings */
-    --transition-gentle: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-
-    --radius: 1rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    /* Dark theme with deep navy and calming colors */
+    /* Night Sky Theme - Deep space colors with celestial elements */
     --background: 220 30% 8%;
     --foreground: 210 40% 98%;
 
@@ -90,48 +18,112 @@ All colors MUST be HSL.
     --popover: 220 25% 12%;
     --popover-foreground: 210 40% 98%;
 
-    /* Lavender primary */
-    --primary: 280 60% 75%;
+    /* Moon silver primary */
+    --primary: 210 20% 85%;
     --primary-foreground: 220 30% 8%;
-    --primary-soft: 280 40% 20%;
+    --primary-soft: 210 15% 25%;
 
-    /* Soft blue secondary */
-    --secondary: 220 50% 70%;
-    --secondary-foreground: 210 40% 98%;
-    --secondary-soft: 220 30% 15%;
+    /* Rain blue secondary */
+    --secondary: 200 80% 60%;
+    --secondary-foreground: 220 30% 8%;
+    --secondary-soft: 200 40% 20%;
 
-    /* Calm accent */
-    --accent: 200 60% 70%;
+    /* Star gold accent */
+    --accent: 45 90% 70%;
     --accent-foreground: 220 30% 8%;
-    --accent-soft: 200 30% 15%;
+    --accent-soft: 45 40% 25%;
 
     --muted: 220 20% 15%;
     --muted-foreground: 215 20.2% 65.1%;
 
-
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 62.8% 50%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 220 20% 20%;
     --input: 220 20% 15%;
-    --ring: 280 60% 75%;
+    --ring: 210 20% 85%;
 
-    /* Dark theme gradients */
-    --gradient-warm: linear-gradient(135deg, hsl(280 40% 20%), hsl(220 30% 15%));
-    --gradient-calm: linear-gradient(180deg, hsl(200 30% 15%), hsl(220 30% 8%));
-    --gradient-connect: linear-gradient(45deg, hsl(280 60% 75%), hsl(200 60% 70%));
-    --gradient-soft: linear-gradient(135deg, hsl(220 20% 15%), hsl(220 30% 8%));
-    --gradient-healing: linear-gradient(135deg, hsl(151 30% 20%), hsl(151 20% 15%));
-    --gradient-generous: linear-gradient(135deg, hsl(44 40% 25%), hsl(38 30% 20%));
+    /* Night sky gradients */
+    --gradient-night: linear-gradient(135deg, hsl(220 40% 5%), hsl(240 30% 12%), hsl(220 25% 8%));
+    --gradient-moon: linear-gradient(135deg, hsl(210 20% 85%), hsl(210 15% 75%));
+    --gradient-rain: linear-gradient(180deg, hsl(200 80% 60%), hsl(200 60% 40%));
+    --gradient-stars: linear-gradient(45deg, hsl(45 90% 70%), hsl(50 80% 60%));
+    --gradient-cosmic: linear-gradient(135deg, hsl(220 40% 5%), hsl(240 50% 15%), hsl(260 40% 20%));
+    --gradient-aurora: linear-gradient(135deg, hsl(200 80% 60%), hsl(280 60% 70%), hsl(45 90% 70%));
 
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Celestial shadows */
+    --shadow-moon: 0 4px 20px -8px hsl(210 20% 85% / 0.3);
+    --shadow-star: 0 8px 30px -12px hsl(45 90% 70% / 0.4);
+    --shadow-cosmic: 0 10px 40px -20px hsl(200 80% 60% / 0.3);
+
+    /* Animation timings */
+    --transition-gentle: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 1rem;
+
+    --sidebar-background: 220 25% 10%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 210 20% 85%;
+    --sidebar-primary-foreground: 220 30% 8%;
+    --sidebar-accent: 220 20% 15%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 220 20% 20%;
+    --sidebar-ring: 210 20% 85%;
+  }
+
+  .dark {
+    /* Enhanced Night Sky Theme - Same as root for consistency */
+    --background: 220 30% 8%;
+    --foreground: 210 40% 98%;
+
+    --card: 220 25% 12%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 220 25% 12%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Moon silver primary */
+    --primary: 210 20% 85%;
+    --primary-foreground: 220 30% 8%;
+    --primary-soft: 210 15% 25%;
+
+    /* Rain blue secondary */
+    --secondary: 200 80% 60%;
+    --secondary-foreground: 220 30% 8%;
+    --secondary-soft: 200 40% 20%;
+
+    /* Star gold accent */
+    --accent: 45 90% 70%;
+    --accent-foreground: 220 30% 8%;
+    --accent-soft: 45 40% 25%;
+
+    --muted: 220 20% 15%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 20% 20%;
+    --input: 220 20% 15%;
+    --ring: 210 20% 85%;
+
+    /* Night sky gradients */
+    --gradient-night: linear-gradient(135deg, hsl(220 40% 5%), hsl(240 30% 12%), hsl(220 25% 8%));
+    --gradient-moon: linear-gradient(135deg, hsl(210 20% 85%), hsl(210 15% 75%));
+    --gradient-rain: linear-gradient(180deg, hsl(200 80% 60%), hsl(200 60% 40%));
+    --gradient-stars: linear-gradient(45deg, hsl(45 90% 70%), hsl(50 80% 60%));
+    --gradient-cosmic: linear-gradient(135deg, hsl(220 40% 5%), hsl(240 50% 15%), hsl(260 40% 20%));
+    --gradient-aurora: linear-gradient(135deg, hsl(200 80% 60%), hsl(280 60% 70%), hsl(45 90% 70%));
+
+    --sidebar-background: 220 25% 10%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 210 20% 85%;
+    --sidebar-primary-foreground: 220 30% 8%;
+    --sidebar-accent: 220 20% 15%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 220 20% 20%;
+    --sidebar-ring: 210 20% 85%;
   }
 }
 
@@ -147,80 +139,310 @@ All colors MUST be HSL.
 }
 
 @layer components {
-  /* Gentle button variants */
-  .btn-warm {
-    @apply bg-gradient-to-r from-secondary to-secondary-soft text-secondary-foreground 
-           shadow-[var(--shadow-warm)] transition-[var(--transition-gentle)]
-           hover:scale-105 hover:shadow-[var(--shadow-floating)]
-           active:scale-95;
+  /* Enhanced Night Sky Button Variants with Micro-interactions */
+  .btn-moon {
+    @apply bg-gradient-to-r from-primary to-primary-soft text-primary-foreground
+           shadow-[var(--shadow-moon)] transition-all duration-200 ease-in-out
+           border border-primary/20 relative overflow-hidden;
   }
   
-  .btn-connect {
-    @apply bg-gradient-to-r from-primary to-accent text-primary-foreground 
-           shadow-[var(--shadow-gentle)] transition-[var(--transition-bounce)]
-           hover:scale-105 hover:shadow-[var(--shadow-floating)]
-           active:scale-95;
+  .btn-moon:hover {
+    @apply scale-105 shadow-[0_0_20px_-5px] shadow-[#6cb4ff]/50;
+    box-shadow: 0 0 20px -5px #6cb4ff50, 0 8px 30px -12px hsl(var(--primary) / 0.4);
+    filter: brightness(1.1);
   }
   
+  .btn-rain {
+    @apply bg-gradient-to-r from-secondary to-secondary-soft text-secondary-foreground
+           shadow-[var(--shadow-star)] transition-all duration-200 ease-in-out
+           border border-secondary/30 relative overflow-hidden;
+  }
+  
+  .btn-rain:hover {
+    @apply scale-105 shadow-[0_0_20px_-5px] shadow-[#6cb4ff]/50;
+    box-shadow: 0 0 20px -5px #6cb4ff50, 0 8px 30px -12px hsl(var(--secondary) / 0.4);
+    filter: brightness(1.1);
+  }
+  
+  .btn-star {
+    @apply bg-gradient-to-r from-accent to-accent-soft text-accent-foreground
+           shadow-[var(--shadow-star)] transition-all duration-200 ease-in-out
+           border border-accent/30 relative overflow-hidden;
+  }
+  
+  .btn-star:hover {
+    @apply scale-105 shadow-[0_0_20px_-5px] shadow-[#8b5cf6]/50;
+    box-shadow: 0 0 20px -5px #8b5cf650, 0 8px 30px -12px hsl(var(--accent) / 0.4);
+    filter: brightness(1.1);
+  }
+
   .btn-gentle {
-    @apply bg-accent-soft text-accent-foreground border border-accent/20
-           shadow-[var(--shadow-gentle)] transition-[var(--transition-gentle)]
-           hover:bg-accent hover:text-accent-foreground hover:scale-105
-           active:scale-95;
+    @apply bg-accent-soft/20 text-accent-foreground border border-accent/30
+           shadow-[var(--shadow-gentle)] transition-all duration-200 ease-in-out
+           backdrop-blur-sm relative overflow-hidden;
+  }
+  
+  .btn-gentle:hover {
+    @apply scale-105 bg-accent/20 shadow-[0_0_15px_-3px] shadow-[#6cb4ff]/40;
+    box-shadow: 0 0 15px -3px #6cb4ff40, 0 4px 20px -8px hsl(var(--accent) / 0.3);
+    filter: brightness(1.05);
   }
 
-  /* Card with warm feeling */
+  /* Legacy button support */
+  .btn-warm { @apply btn-rain; }
+  .btn-connect { @apply btn-moon; }
+
+  /* Enhanced Night Sky Card with Entry Animations */
   .card-warm {
-    @apply bg-gradient-to-br from-card to-primary-soft/20 
-           shadow-[var(--shadow-warm)] border border-border/50
-           transition-[var(--transition-gentle)]
-           hover:shadow-[var(--shadow-floating)] hover:scale-[1.02];
+    @apply bg-gradient-to-br from-card via-card to-primary-soft/10
+           shadow-[var(--shadow-cosmic)] border border-border/30
+           transition-all duration-300 ease-out backdrop-blur-sm
+           relative overflow-hidden;
+    animation: card-entry 0.6s ease-out;
   }
 
-  /* Floating animation for connection elements */
-  .float-gentle {
-    animation: float 3s ease-in-out infinite;
-  }
-  
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+  .card-warm:hover {
+    @apply shadow-[var(--shadow-moon)] scale-[1.02];
+    box-shadow: 0 0 25px -10px hsl(var(--primary) / 0.3), 0 10px 40px -20px hsl(var(--accent) / 0.2);
   }
 
-  /* Pulse for heartbeat effect */
-  .pulse-heart {
-    animation: pulse-heart 2s ease-in-out infinite;
-  }
-  
-  @keyframes pulse-heart {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.05); opacity: 0.8; }
+  .card-warm::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-cosmic);
+    opacity: 0.1;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
   }
 
-  /* Gentle slide-in animations */
-  .slide-in-gentle {
-    animation: slide-in-gentle 0.6s ease-out;
+  .card-warm:hover::before {
+    opacity: 0.15;
   }
-  
-  @keyframes slide-in-gentle {
+
+  /* Staggered card entry animation */
+  .card-entry-1 { animation-delay: 0ms; }
+  .card-entry-2 { animation-delay: 100ms; }
+  .card-entry-3 { animation-delay: 200ms; }
+  .card-entry-4 { animation-delay: 300ms; }
+  .card-entry-5 { animation-delay: 400ms; }
+  .card-entry-6 { animation-delay: 500ms; }
+
+  @keyframes card-entry {
     from {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(30px) scale(0.95);
     }
     to {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
     }
   }
 
-  /* Auto theme switching based on time */
+  /* Enhanced Celestial Animations */
+  .float-gentle {
+    animation: float-moon 4s ease-in-out infinite;
+  }
+  
+  @keyframes float-moon {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(2deg); }
+  }
+
+  .pulse-heart {
+    animation: pulse-star 2.5s ease-in-out infinite;
+  }
+  
+  @keyframes pulse-star {
+    0%, 100% { transform: scale(1); opacity: 0.8; filter: brightness(1); }
+    50% { transform: scale(1.1); opacity: 1; filter: brightness(1.3); }
+  }
+
+  .slide-in-gentle {
+    animation: slide-in-cosmic 0.8s ease-out;
+  }
+  
+  @keyframes slide-in-cosmic {
+    from {
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  /* Back Button Wiggle Animation */
+  .back-button-idle {
+    animation: gentle-wiggle 0.5s ease-in-out;
+  }
+
+  @keyframes gentle-wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-3deg); }
+    75% { transform: rotate(3deg); }
+  }
+
+  /* Enhanced Button Glow Effects */
+  .btn-glow-blue {
+    position: relative;
+  }
+
+  .btn-glow-blue::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #6cb4ff, #8b5cf6);
+    border-radius: inherit;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.2s ease-in-out;
+    filter: blur(8px);
+  }
+
+  .btn-glow-blue:hover::before {
+    opacity: 0.7;
+  }
+
+  /* Mood Graph Enhanced Tooltips */
+  .mood-tooltip {
+    @apply bg-card/95 backdrop-blur-md p-4 rounded-xl border border-border/40 shadow-xl;
+    animation: tooltip-appear 0.2s ease-out;
+  }
+
+  @keyframes tooltip-appear {
+    from {
+      opacity: 0;
+      transform: translateY(10px) scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  /* Emoji Picker Animations */
+  .emoji-picker {
+    animation: emoji-bounce 0.3s ease-out;
+  }
+
+  .emoji-picker:hover {
+    animation: emoji-glow 0.2s ease-in-out;
+    filter: brightness(1.2) drop-shadow(0 0 10px currentColor);
+  }
+
+  @keyframes emoji-bounce {
+    0% { transform: scale(0.8); opacity: 0; }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  @keyframes emoji-glow {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+
+  /* Sparkly Caret Animation */
+  .sparkly-input {
+    position: relative;
+  }
+
+  .sparkly-input:focus::after {
+    content: '✨';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: sparkle 1s ease-in-out infinite;
+  }
+
+  @keyframes sparkle {
+    0%, 100% { opacity: 0.5; transform: translateY(-50%) scale(1); }
+    50% { opacity: 1; transform: translateY(-50%) scale(1.2); }
+  }
+
+  /* Streak Badge Animation */
+  .streak-badge {
+    animation: badge-earned 0.8s ease-out;
+  }
+
+  @keyframes badge-earned {
+    0% {
+      opacity: 0;
+      transform: scale(0) rotate(-180deg);
+    }
+    50% {
+      transform: scale(1.2) rotate(-90deg);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+  }
+
+  /* Night Sky Background */
+  .night-sky {
+    background: var(--gradient-night);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .night-sky::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+      radial-gradient(2px 2px at 20px 30px, hsl(45 90% 70%), transparent),
+      radial-gradient(2px 2px at 40px 70px, hsl(210 20% 85%), transparent),
+      radial-gradient(1px 1px at 90px 40px, hsl(45 90% 70%), transparent),
+      radial-gradient(1px 1px at 130px 80px, hsl(210 20% 85%), transparent),
+      radial-gradient(2px 2px at 160px 30px, hsl(45 90% 70%), transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: twinkle-stars 8s linear infinite;
+    opacity: 0.6;
+  }
+
+  @keyframes twinkle-stars {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+
+  /* Rain Effect */
+  .rain-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(transparent 0%, hsl(200 80% 60% / 0.1) 50%, transparent 100%);
+    animation: rain-fall 3s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes rain-fall {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
+  }
+
+  /* Auto dark theme */
   @media (prefers-color-scheme: dark) {
     :root {
       color-scheme: dark;
     }
   }
 
-  /* Ambient stars animation */
+  /* Enhanced star field */
   .star-field {
     position: fixed;
     top: 0;
@@ -229,19 +451,92 @@ All colors MUST be HSL.
     height: 100%;
     pointer-events: none;
     z-index: -1;
+    background: var(--gradient-night);
   }
 
   .star {
     position: absolute;
-    width: 2px;
-    height: 2px;
-    background: white;
     border-radius: 50%;
-    animation: twinkle 3s infinite;
+    animation: twinkle-individual 4s infinite;
   }
 
-  @keyframes twinkle {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 1; }
+  .star-small {
+    width: 1px;
+    height: 1px;
+    background: hsl(45 90% 70%);
+  }
+
+  .star-medium {
+    width: 2px;
+    height: 2px;
+    background: hsl(210 20% 85%);
+  }
+
+  .star-large {
+    width: 3px;
+    height: 3px;
+    background: hsl(45 90% 70%);
+    box-shadow: 0 0 6px hsl(45 90% 70%);
+  }
+
+  @keyframes twinkle-individual {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+
+  /* Custom Slider Styling */
+  .slider {
+    background: linear-gradient(to right, hsl(var(--accent)) 0%, hsl(var(--accent)) var(--value, 60%), hsl(var(--muted)) var(--value, 60%), hsl(var(--muted)) 100%);
+  }
+
+  .slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: hsl(var(--accent));
+    cursor: pointer;
+    border: 2px solid hsl(var(--background));
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+  }
+
+  .slider::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px hsl(var(--accent) / 0.5);
+  }
+
+  .slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: hsl(var(--accent));
+    cursor: pointer;
+    border: 2px solid hsl(var(--background));
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+  }
+
+  .slider::-moz-range-thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px hsl(var(--accent) / 0.5);
+  }
+
+  /* Room Creation Modal Animations */
+  .room-type-card {
+    transition: all 0.2s ease-in-out;
+  }
+
+  .room-type-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px -8px hsl(var(--accent) / 0.3);
+  }
+
+  .theme-color-button {
+    transition: all 0.2s ease-in-out;
+  }
+
+  .theme-color-button:hover {
+    transform: translateY(-2px) scale(1.05);
   }
 }
