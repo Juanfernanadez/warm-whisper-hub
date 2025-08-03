@@ -141,8 +141,8 @@ export const TalkRooms = () => {
   });
 
   const handleJoinRoom = (roomId: string) => {
-    console.log(`Joining room: ${roomId}`);
-    // Here you would implement the room joining logic
+    // Navigate to the room page which will handle validation and joining
+    window.location.href = `/room/${roomId}`;
   };
 
   const handleRoomCreated = (roomData: any) => {
@@ -294,8 +294,8 @@ export const TalkRooms = () => {
                 Create a safe space for others and build meaningful connections
               </p>
               <Button className="btn-star w-full">
-                onClick={() => setShowCreateModal(true)}
                 <Plus className="w-4 h-4 mr-2" />
+                onClick={() => setShowCreateModal(true)}
                 Create Your Room
               </Button>
             </CardContent>
