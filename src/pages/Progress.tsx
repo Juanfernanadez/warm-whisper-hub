@@ -62,36 +62,33 @@ export const Progress = () => {
   const availableBadges = badges.filter(badge => !badge.earned);
 
   return (
-    <div className="min-h-screen night-sky relative overflow-hidden">
-      {/* Animated star field background */}
-      <div className="star-field">
-        <div className="star star-small" style={{ top: '10%', left: '15%', animationDelay: '0s' }}></div>
-        <div className="star star-medium" style={{ top: '20%', left: '85%', animationDelay: '1s' }}></div>
-        <div className="star star-large" style={{ top: '30%', left: '70%', animationDelay: '2s' }}></div>
-        <div className="star star-small" style={{ top: '50%', left: '20%', animationDelay: '3s' }}></div>
-        <div className="star star-medium" style={{ top: '70%', left: '80%', animationDelay: '1.5s' }}></div>
-        <div className="star star-small" style={{ top: '80%', left: '40%', animationDelay: '2.5s' }}></div>
-      </div>
+    <div className="professional-bg relative overflow-hidden">
 
       <BackButton />
 
       <div className="pt-24 pb-8 px-4 max-w-6xl mx-auto relative z-10">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-foreground mb-2 drop-shadow-sm">
+        <div className="dashboard-header">
+          <div>
+            <h1 className="text-3xl font-bold text-foreground mb-2">
             Your Healing Timeline
           </h1>
-          <p className="text-muted-foreground">
+            <p className="text-muted-foreground">
             Track your journey and celebrate your progress
           </p>
+          </div>
+          <div className="status-active">
+            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+            Active Journey
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           {/* Mood Graph */}
-          <Card className="card-warm card-entry-1 backdrop-blur-md col-span-1 lg:col-span-2">
+          <Card className="analytics-card col-span-1 lg:col-span-2">
             <CardHeader>
               <CardTitle className="flex items-center space-x-2 text-foreground">
-                <TrendingUp className="w-5 h-5 text-accent" />
+                <TrendingUp className="w-5 h-5 text-primary" />
                 <span>7-Day Mood Journey</span>
               </CardTitle>
             </CardHeader>
@@ -114,10 +111,10 @@ export const Progress = () => {
                     <Line 
                       type="monotone" 
                       dataKey="mood" 
-                      stroke="hsl(var(--secondary))" 
+                      stroke="hsl(var(--primary))" 
                       strokeWidth={3}
-                      dot={{ fill: "hsl(var(--accent))", strokeWidth: 2, r: 6 }}
-                      activeDot={{ r: 8, fill: "hsl(var(--accent))" }}
+                      dot={{ fill: "hsl(var(--primary))", strokeWidth: 2, r: 6 }}
+                      activeDot={{ r: 8, fill: "hsl(var(--primary))" }}
                     />
                   </LineChart>
                 </ResponsiveContainer>
@@ -126,17 +123,17 @@ export const Progress = () => {
           </Card>
 
           {/* Earned Badges */}
-          <Card className="card-warm card-entry-2 backdrop-blur-md">
+          <Card className="analytics-card">
             <CardHeader>
               <CardTitle className="flex items-center space-x-2 text-foreground">
-                <Award className="w-5 h-5 text-accent" />
+                <Award className="w-5 h-5 text-primary" />
                 <span>Badges Earned</span>
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
                 {earnedBadges.map((badge) => (
-                  <div key={badge.id} className="flex items-center space-x-3 p-3 rounded-lg bg-accent/10 border border-accent/20">
+                  <div key={badge.id} className="flex items-center space-x-3 p-3 rounded-lg bg-primary/5 border border-primary/20">
                     <span className="text-2xl">{badge.icon}</span>
                     <div>
                       <h4 className="font-medium text-foreground">{badge.name}</h4>
@@ -149,10 +146,10 @@ export const Progress = () => {
           </Card>
 
           {/* Journal Highlights */}
-          <Card className="card-warm card-entry-3 backdrop-blur-md">
+          <Card className="analytics-card">
             <CardHeader>
               <CardTitle className="flex items-center space-x-2 text-foreground">
-                <Calendar className="w-5 h-5 text-secondary" />
+                <Calendar className="w-5 h-5 text-primary" />
                 <span>Journal Highlights</span>
               </CardTitle>
             </CardHeader>
@@ -161,10 +158,10 @@ export const Progress = () => {
                 <p className="text-sm text-muted-foreground mb-4">Most-used words in your entries:</p>
                 {journalHighlights.map((highlight, index) => (
                   <div key={index} className="flex items-center justify-between">
-                    <span className={`font-medium ${highlight.color}`}>
+                    <span className="font-medium text-primary">
                       {highlight.word}
                     </span>
-                    <Badge variant="outline" className="border-border/30">
+                    <Badge variant="outline" className="border-primary/20 text-primary">
                       {highlight.count}x
                     </Badge>
                   </div>
@@ -175,7 +172,7 @@ export const Progress = () => {
         </div>
 
         {/* Available Badges */}
-        <Card className="card-warm card-entry-4 backdrop-blur-md mb-8">
+        <Card className="analytics-card mb-8">
           <CardHeader>
             <CardTitle className="flex items-center space-x-2 text-foreground">
               <Target className="w-5 h-5 text-muted-foreground" />
@@ -185,7 +182,7 @@ export const Progress = () => {
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {availableBadges.map((badge) => (
-                <div key={badge.id} className="flex items-center space-x-3 p-3 rounded-lg bg-muted/10 border border-border/20 opacity-60">
+                <div key={badge.id} className="flex items-center space-x-3 p-3 rounded-lg bg-muted border border-border opacity-60">
                   <span className="text-2xl grayscale">{badge.icon}</span>
                   <div>
                     <h4 className="font-medium text-muted-foreground">{badge.name}</h4>
@@ -198,7 +195,7 @@ export const Progress = () => {
         </Card>
 
         {/* Weekly Intention */}
-        <Card className="card-warm card-entry-5 backdrop-blur-md">
+        <Card className="analytics-card">
           <CardHeader>
             <CardTitle className="text-center text-foreground">
               Set Your Weekly Intention
@@ -209,10 +206,10 @@ export const Progress = () => {
               value={weeklyIntention}
               onChange={(e) => setWeeklyIntention(e.target.value)}
               placeholder="What would you like to focus on this week? (e.g., 'I want to practice gratitude daily' or 'I will be kind to myself')"
-              className="w-full p-4 rounded-lg bg-input border border-border/30 text-foreground placeholder:text-muted-foreground resize-none h-24 focus:outline-none focus:ring-2 focus:ring-accent/50"
+              className="w-full p-4 rounded-lg bg-input border border-border text-foreground placeholder:text-muted-foreground resize-none h-24 focus:outline-none focus:ring-2 focus:ring-primary/50"
             />
-            <Button className="btn-star w-full py-3 text-lg font-medium rounded-full">
-              ⭐ Set My Intention
+            <Button className="btn-moon w-full py-3 text-lg font-medium">
+              Set My Intention
             </Button>
           </CardContent>
         </Card>

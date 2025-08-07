@@ -24,15 +24,15 @@ export const Navbar = ({ isAuthenticated = false, onSignIn, onProfile }: NavbarP
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0d1117]/80 backdrop-blur-md border-b border-border/20 shadow-lg">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-md border-b border-border shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo/Brand */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-accent to-secondary rounded-full flex items-center justify-center">
-              <Heart className="w-4 h-4 text-accent-foreground" fill="currentColor" />
+            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+              <Heart className="w-4 h-4 text-primary-foreground" fill="currentColor" />
             </div>
-            <span className="text-foreground font-semibold text-lg hidden sm:block">
+            <span className="text-foreground font-bold text-lg hidden sm:block">
               Warm Whisper
             </span>
           </Link>
@@ -47,8 +47,8 @@ export const Navbar = ({ isAuthenticated = false, onSignIn, onProfile }: NavbarP
                   to={item.path}
                   className={`flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                     isActivePath(item.path)
-                      ? "text-[#6cb4ff] bg-[#6cb4ff]/10 shadow-sm"
-                      : "text-[#f1f1f1] hover:text-[#6cb4ff] hover:bg-[#6cb4ff]/5"
+                      ? "text-primary bg-primary/10 shadow-sm"
+                      : "text-foreground hover:text-primary hover:bg-primary/5"
                   }`}
                 >
                   <Icon className="w-4 h-4" />
@@ -63,7 +63,7 @@ export const Navbar = ({ isAuthenticated = false, onSignIn, onProfile }: NavbarP
             {isAuthenticated ? (
               <button
                 onClick={onProfile}
-                className="flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium text-[#f1f1f1] hover:text-[#6cb4ff] hover:bg-[#6cb4ff]/5 transition-all duration-200"
+                className="flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium text-foreground hover:text-primary hover:bg-primary/5 transition-all duration-200"
               >
                 <User className="w-4 h-4" />
                 <span>Profile</span>
@@ -71,7 +71,7 @@ export const Navbar = ({ isAuthenticated = false, onSignIn, onProfile }: NavbarP
             ) : (
               <button
                 onClick={onSignIn}
-                className="flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium bg-[#6cb4ff]/10 text-[#6cb4ff] hover:bg-[#6cb4ff]/20 border border-[#6cb4ff]/20 transition-all duration-200"
+                className="flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200"
               >
                 <LogIn className="w-4 h-4" />
                 <span>Sign In</span>
@@ -82,7 +82,7 @@ export const Navbar = ({ isAuthenticated = false, onSignIn, onProfile }: NavbarP
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg text-[#f1f1f1] hover:text-[#6cb4ff] hover:bg-[#6cb4ff]/5 transition-all duration-200"
+            className="md:hidden p-2 rounded-lg text-foreground hover:text-primary hover:bg-primary/5 transition-all duration-200"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isMobileMenuOpen ? (
@@ -96,7 +96,7 @@ export const Navbar = ({ isAuthenticated = false, onSignIn, onProfile }: NavbarP
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border/20">
+          <div className="md:hidden py-4 border-t border-border">
             <div className="space-y-2">
               {navItems.map((item) => {
                 const Icon = item.icon;
@@ -107,8 +107,8 @@ export const Navbar = ({ isAuthenticated = false, onSignIn, onProfile }: NavbarP
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={`flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
                       isActivePath(item.path)
-                        ? "text-[#6cb4ff] bg-[#6cb4ff]/10"
-                        : "text-[#f1f1f1] hover:text-[#6cb4ff] hover:bg-[#6cb4ff]/5"
+                        ? "text-primary bg-primary/10"
+                        : "text-foreground hover:text-primary hover:bg-primary/5"
                     }`}
                   >
                     <Icon className="w-5 h-5" />
@@ -118,14 +118,14 @@ export const Navbar = ({ isAuthenticated = false, onSignIn, onProfile }: NavbarP
               })}
               
               {/* Mobile Auth */}
-              <div className="pt-4 border-t border-border/20">
+              <div className="pt-4 border-t border-border">
                 {isAuthenticated ? (
                   <button
                     onClick={() => {
                       onProfile?.();
                       setIsMobileMenuOpen(false);
                     }}
-                    className="flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium text-[#f1f1f1] hover:text-[#6cb4ff] hover:bg-[#6cb4ff]/5 transition-all duration-200 w-full"
+                    className="flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium text-foreground hover:text-primary hover:bg-primary/5 transition-all duration-200 w-full"
                   >
                     <User className="w-5 h-5" />
                     <span>Profile</span>
@@ -136,7 +136,7 @@ export const Navbar = ({ isAuthenticated = false, onSignIn, onProfile }: NavbarP
                       onSignIn?.();
                       setIsMobileMenuOpen(false);
                     }}
-                    className="flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium bg-[#6cb4ff]/10 text-[#6cb4ff] hover:bg-[#6cb4ff]/20 border border-[#6cb4ff]/20 transition-all duration-200 w-full"
+                    className="flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 w-full"
                   >
                     <LogIn className="w-5 h-5" />
                     <span>Sign In</span>

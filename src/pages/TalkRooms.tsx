@@ -151,32 +151,32 @@ export const TalkRooms = () => {
     // and potentially navigate to the room or show success message
   };
   return (
-    <div className="min-h-screen night-sky relative overflow-hidden">
-      {/* Animated star field background */}
-      <div className="star-field">
-        <div className="star star-small" style={{ top: '8%', left: '12%', animationDelay: '0s' }}></div>
-        <div className="star star-medium" style={{ top: '18%', left: '88%', animationDelay: '1s' }}></div>
-        <div className="star star-large" style={{ top: '28%', left: '72%', animationDelay: '2s' }}></div>
-        <div className="star star-small" style={{ top: '48%', left: '18%', animationDelay: '3s' }}></div>
-        <div className="star star-medium" style={{ top: '68%', left: '82%', animationDelay: '1.5s' }}></div>
-        <div className="star star-small" style={{ top: '88%', left: '28%', animationDelay: '2.5s' }}></div>
-      </div>
+    <div className="professional-bg relative overflow-hidden">
 
       <BackButton />
 
       <div className="pt-24 pb-8 px-4 max-w-6xl mx-auto relative z-10">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-foreground mb-2 drop-shadow-sm">
+        <div className="dashboard-header">
+          <div>
+            <h1 className="text-3xl font-bold text-foreground mb-2">
             Talk Rooms
           </h1>
-          <p className="text-muted-foreground">
+            <p className="text-muted-foreground">
             Join supportive conversations with people who understand
           </p>
+          </div>
+          <Button 
+            onClick={() => setShowCreateModal(true)}
+            className="btn-moon"
+          >
+            <Plus className="w-4 h-4 mr-2" />
+            Create Room
+          </Button>
         </div>
 
         {/* Filters */}
-        <div className="flex flex-wrap gap-3 mb-8 justify-center">
+        <div className="flex flex-wrap gap-3 mb-8">
           {filters.map((filter) => (
             <Button
               key={filter.id}
@@ -184,12 +184,12 @@ export const TalkRooms = () => {
               variant={selectedFilter === filter.id ? "default" : "outline"}
               className={`${
                 selectedFilter === filter.id 
-                  ? "btn-rain" 
-                  : "btn-gentle border-border/30 hover:border-secondary/50"
+                  ? "btn-moon" 
+                  : "btn-gentle"
               }`}
             >
               {filter.label}
-              <Badge variant="secondary" className="ml-2 text-xs">
+              <Badge variant="secondary" className="ml-2 text-xs bg-primary/10 text-primary">
                 {filter.count}
               </Badge>
             </Button>
@@ -198,11 +198,11 @@ export const TalkRooms = () => {
 
         {/* Talk Rooms Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredRooms.map((room, index) => (
-            <Card key={room.id} className={`card-warm card-entry-${index + 1} backdrop-blur-md relative`}>
+          {filteredRooms.map((room) => (
+            <Card key={room.id} className="analytics-card relative">
               {room.isPremium && (
                 <div className="absolute -top-2 -right-2">
-                  <Badge className="bg-accent text-accent-foreground">
+                  <Badge className="status-premium">
                     <Star className="w-3 h-3 mr-1" />
                     Premium
                   </Badge>
@@ -223,9 +223,9 @@ export const TalkRooms = () => {
                     </div>
                   </div>
                   {room.isActive && (
-                    <div className="flex items-center space-x-1">
-                      <div className="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
-                      <span className="text-xs text-accent font-medium">Live</span>
+                    <div className="status-active">
+                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                      Live
                     </div>
                   )}
                 </div>
@@ -254,7 +254,7 @@ export const TalkRooms = () => {
 
                 <div className="flex flex-wrap gap-1">
                   {room.tags.map((tag, index) => (
-                    <Badge key={index} variant="outline" className="text-xs border-border/30">
+                    <Badge key={index} variant="outline" className="text-xs border-primary/20 text-primary">
                       {tag}
                     </Badge>
                   ))}
@@ -265,7 +265,7 @@ export const TalkRooms = () => {
                   disabled={!room.isActive || room.participants >= room.maxParticipants}
                   className={`w-full ${
                     room.isActive && room.participants < room.maxParticipants
-                      ? "btn-rain"
+                      ? "btn-moon"
                       : "opacity-50 cursor-not-allowed"
                   }`}
                 >
@@ -280,26 +280,6 @@ export const TalkRooms = () => {
               </CardContent>
             </Card>
           ))}
-        </div>
-
-        {/* Create Room CTA */}
-        <div className="text-center mt-12">
-          <Card className="card-warm backdrop-blur-md max-w-md mx-auto">
-            <CardContent className="p-6 text-center space-y-4">
-              <Heart className="w-12 h-12 text-accent mx-auto" />
-              <h3 className="text-lg font-semibold text-foreground">
-                Want to host your own room?
-              </h3>
-              <p className="text-sm text-muted-foreground">
-                Create a safe space for others and build meaningful connections
-              </p>
-              <Button className="btn-star w-full">
-                <Plus className="w-4 h-4 mr-2" />
-                onClick={() => setShowCreateModal(true)}
-                Create Your Room
-              </Button>
-            </CardContent>
-          </Card>
         </div>
 
         {/* Create Room Modal */}

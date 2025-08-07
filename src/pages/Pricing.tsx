@@ -118,24 +118,14 @@ export const Pricing = () => {
   };
 
   return (
-    <div className="min-h-screen night-sky relative overflow-hidden">
-      {/* Animated star field background */}
-      <div className="star-field">
-        <div className="star star-small" style={{ top: '5%', left: '10%', animationDelay: '0s' }}></div>
-        <div className="star star-medium" style={{ top: '15%', left: '90%', animationDelay: '1s' }}></div>
-        <div className="star star-large" style={{ top: '25%', left: '75%', animationDelay: '2s' }}></div>
-        <div className="star star-small" style={{ top: '45%', left: '15%', animationDelay: '3s' }}></div>
-        <div className="star star-medium" style={{ top: '65%', left: '85%', animationDelay: '1.5s' }}></div>
-        <div className="star star-small" style={{ top: '85%', left: '25%', animationDelay: '2.5s' }}></div>
-        <div className="star star-large" style={{ top: '35%', left: '50%', animationDelay: '0.5s' }}></div>
-      </div>
+    <div className="professional-bg relative overflow-hidden">
 
       <BackButton />
 
       <div className="pt-24 pb-8 px-4 max-w-7xl mx-auto relative z-10">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-foreground mb-4 drop-shadow-sm">
+        <div className="text-center mb-12 fade-in">
+          <h1 className="text-4xl font-bold text-foreground mb-4">
             Support Yourself or Someone Else
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -144,17 +134,17 @@ export const Pricing = () => {
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {plans.map((plan, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 slide-up">
+          {plans.map((plan) => (
             <Card
               key={plan.id}
-              className={`card-warm card-entry-${index + 1} backdrop-blur-md relative ${
-                plan.highlight ? 'ring-2 ring-secondary/50 shadow-[0_0_30px_-12px] shadow-secondary/30' : ''
-              } ${plan.gift ? 'float-gentle' : ''}`}
+              className={`analytics-card relative ${
+                plan.highlight ? 'ring-2 ring-primary/50 shadow-lg' : ''
+              }`}
             >
               {plan.popular && (
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                  <Badge className="bg-secondary text-secondary-foreground px-3 py-1">
+                  <Badge className="bg-primary text-primary-foreground px-3 py-1">
                     <Star className="w-3 h-3 mr-1" />
                     Most Popular
                   </Badge>
@@ -163,7 +153,7 @@ export const Pricing = () => {
               
               {plan.gift && (
                 <div className="absolute -top-3 right-4">
-                  <Badge className="bg-accent text-accent-foreground px-3 py-1">
+                  <Badge className="status-premium px-3 py-1">
                     <Gift className="w-3 h-3 mr-1" />
                     Gift
                   </Badge>
@@ -175,7 +165,7 @@ export const Pricing = () => {
                   {plan.name}
                 </CardTitle>
                 <div className="mt-4">
-                  <span className="text-4xl font-bold text-accent">{plan.price}</span>
+                  <span className="text-4xl font-bold text-primary">{plan.price}</span>
                   <span className="text-muted-foreground ml-2">/{plan.period}</span>
                 </div>
                 <p className="text-sm text-muted-foreground mt-2">
@@ -187,7 +177,7 @@ export const Pricing = () => {
                 <ul className="space-y-3">
                   {plan.features.map((feature, index) => (
                     <li key={index} className="flex items-start space-x-3">
-                      <Check className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
+                      <Check className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
                       <span className="text-sm text-foreground">{feature}</span>
                     </li>
                   ))}
@@ -195,13 +185,13 @@ export const Pricing = () => {
 
                 <Button
                   onClick={() => handleSelectPlan(plan.id)}
-                  className={`btn-${plan.buttonVariant} w-full py-3 text-lg font-medium rounded-full ${
+                  className={`btn-moon w-full py-3 text-lg font-medium ${
                     plan.highlight ? 'shadow-lg hover:shadow-xl' : ''
                   }`}
                   size="lg"
                 >
                   {plan.gift && <Gift className="w-4 h-4 mr-2" />}
-                  {plan.popular && <Sparkles className="w-4 h-4 mr-2" />}
+                  {plan.popular && <Star className="w-4 h-4 mr-2" />}
                   {plan.buttonText}
                 </Button>
               </CardContent>
@@ -214,7 +204,7 @@ export const Pricing = () => {
           <Button
             onClick={() => setShowComparison(!showComparison)}
             variant="outline"
-            className="btn-gentle"
+            className=""
           >
             {showComparison ? 'Hide' : 'Show'} Feature Comparison
           </Button>
@@ -222,7 +212,7 @@ export const Pricing = () => {
 
         {/* Feature Comparison Table */}
         {showComparison && (
-          <Card className="card-warm backdrop-blur-md">
+          <Card className="analytics-card">
             <CardHeader>
               <CardTitle className="text-center text-foreground">
                 Feature Comparison
@@ -232,7 +222,7 @@ export const Pricing = () => {
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
-                    <tr className="border-b border-border/30">
+                    <tr className="border-b border-border">
                       <th className="text-left py-3 px-4 text-foreground font-medium">Feature</th>
                       <th className="text-center py-3 px-4 text-foreground font-medium">Free</th>
                       <th className="text-center py-3 px-4 text-foreground font-medium">Supporter</th>
@@ -242,32 +232,32 @@ export const Pricing = () => {
                   </thead>
                   <tbody>
                     {comparisonFeatures.map((item, index) => (
-                      <tr key={index} className="border-b border-border/20">
+                      <tr key={index} className="border-b border-border">
                         <td className="py-3 px-4 text-foreground">{item.feature}</td>
                         <td className="text-center py-3 px-4">
                           {item.free ? (
-                            <Check className="w-4 h-4 text-accent mx-auto" />
+                            <Check className="w-4 h-4 text-primary mx-auto" />
                           ) : (
                             <span className="text-muted-foreground">—</span>
                           )}
                         </td>
                         <td className="text-center py-3 px-4">
                           {item.supporter ? (
-                            <Check className="w-4 h-4 text-accent mx-auto" />
+                            <Check className="w-4 h-4 text-primary mx-auto" />
                           ) : (
                             <span className="text-muted-foreground">—</span>
                           )}
                         </td>
                         <td className="text-center py-3 px-4">
                           {item.premium ? (
-                            <Check className="w-4 h-4 text-accent mx-auto" />
+                            <Check className="w-4 h-4 text-primary mx-auto" />
                           ) : (
                             <span className="text-muted-foreground">—</span>
                           )}
                         </td>
                         <td className="text-center py-3 px-4">
                           {item.sponsor ? (
-                            <Check className="w-4 h-4 text-accent mx-auto" />
+                            <Check className="w-4 h-4 text-primary mx-auto" />
                           ) : (
                             <span className="text-muted-foreground">—</span>
                           )}
@@ -286,7 +276,7 @@ export const Pricing = () => {
           <p className="text-muted-foreground mb-4">
             Questions about our plans? We're here to help.
           </p>
-          <Button variant="outline" className="btn-gentle">
+          <Button variant="outline">
             Contact Support
           </Button>
         </div>
