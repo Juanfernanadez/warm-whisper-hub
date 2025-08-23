@@ -13,7 +13,7 @@ interface BadgeData {
   progress: number;
   maxProgress: number;
   category: "connection" | "wellness" | "consistency" | "special";
-  rarity: "common" | "rare" | "legendary";
+  rarity: "common" | "rare" | "legendary"; 
 }
 
 interface EmotionalBadgeSystemProps {
