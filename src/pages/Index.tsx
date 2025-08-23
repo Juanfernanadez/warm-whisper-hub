@@ -9,6 +9,7 @@ import { PremiumAnalyticsDashboard } from "@/components/PremiumAnalyticsDashboar
 import { EmotionalBadgeSystem } from "@/components/EmotionalBadgeSystem";
 import { ProgressTracker } from "@/components/ProgressTracker";
 import { VoiceLogCompanion } from "@/components/VoiceLogCompanion";
+import { AuthModal } from "@/components/AuthModal";
 import { useToast } from "@/hooks/use-toast";
 
 type AppState = "welcome" | "mood" | "connect" | "dashboard" | "journal" | "settings" | "admin" | "premium-analytics" | "badges" | "progress" | "voice-log";
@@ -16,8 +17,10 @@ type AppState = "welcome" | "mood" | "connect" | "dashboard" | "journal" | "sett
 const Index = () => {
   const [currentState, setCurrentState] = useState<AppState>("welcome");
   const [isGuest, setIsGuest] = useState(true);
+  const [showAuthModal, setShowAuthModal] = useState(false);
   const [showPremiumModal, setShowPremiumModal] = useState(false);
   const [showNavbar, setShowNavbar] = useState(false);
+  const [user, setUser] = useState<{ email: string; name: string } | null>(null);
   const [userStats] = useState({
     talksCompleted: 8,
     positiveReviews: 2,
@@ -29,14 +32,30 @@ const Index = () => {
 
   const handleWelcomeStart = (asGuest: boolean) => {
     setIsGuest(asGuest);
-    setCurrentState("mood");
-    setShowNavbar(true); // Show navbar after welcome screen
-    toast({
-      title: "Welcome! 🌟",
-      description: "Take a moment to check in with yourself",
-    });
+    
+    if (asGuest) {
+      setCurrentState("mood");
+      setShowNavbar(true);
+      toast({
+        title: "Welcome! 🌟",
+        description: "Take a moment to check in with yourself",
+      });
+    } else {
+      setShowAuthModal(true);
+    }
   };
 
+  const handleAuthSuccess = (userData: { email: string; name: string }) => {
+    setUser(userData);
+    setIsGuest(false);
+    setShowAuthModal(false);
+    setCurrentState("mood");
+    setShowNavbar(true);
+    toast({
+      title: `Welcome, ${userData.name}! 🌟`,
+      description: "Your account is ready. Let's check in with your mood.",
+    });
+  };
   const handleMoodComplete = (mood: number, tags: string[]) => {
     setCurrentState("connect");
     toast({
@@ -138,6 +157,11 @@ const Index = () => {
         isOpen={showPremiumModal}
         onClose={() => setShowPremiumModal(false)}
         onSelectPlan={handleSelectPlan}
+      />
+      <AuthModal
+        isOpen={showAuthModal}
+        onClose={() => setShowAuthModal(false)}
+        onAuthSuccess={handleAuthSuccess}
       />
     </div>
   );
